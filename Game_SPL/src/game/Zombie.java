@@ -1,4 +1,4 @@
-package game;
+package main;
 
 public class Zombie {
 	public int dmg = 10;
