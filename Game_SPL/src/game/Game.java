@@ -1,4 +1,4 @@
-package game;
+package main;
 
 //JPanel (Panel.java) is added to this JFrame
 import javax.swing.*;
