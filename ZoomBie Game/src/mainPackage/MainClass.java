@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 
 public class MainClass {
 
-	private   JFrame frame;
+	public   JFrame frame;
 	private  JLabel background_1;
 	private  JLabel background_2;
 	private  JPanel jp_1;
@@ -102,17 +102,7 @@ public class MainClass {
 		jp_1.setLayout(null);
 		jp_1.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Statistics");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_2.setBackground(new Color(0, 255, 0));
-		btnNewButton_2.setBounds(115, 205, 100, 32);
-		jp_1.add(btnNewButton_2);
 		
-		JButton btnNewButton_3 = new JButton("Help");
-		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_3.setBackground(new Color(51, 255, 51));
-		btnNewButton_3.setBounds(125, 250, 78, 32);
-		jp_1.add(btnNewButton_3);
 		
 		JButton btnExit = new JButton("Exit");
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 14));
