@@ -89,6 +89,8 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	
 	JFrame frame;
 	JFrame frame2;
+	int counter=0;
+	String time;
 	
 	public Zombie(JFrame frame)  {
 		
@@ -215,6 +217,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 				    public void paintComponent(Graphics g){
 				       
 				        g.drawImage(img6, 0, 0,  820,400, this);
+				        
 				        
 				    }
 			 };
@@ -714,6 +717,23 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			}
 			
 			
+			counter+=14;
+			
+			int seconds=(counter/1000)%60;
+			int minutes=(counter/1000)/60;
+			int hours=(counter/1000)/3600;
+			
+			
+			
+			time=String.format("%2d:%2d:%2d\n",hours,minutes,seconds);
+			
+			
+			
+			g.setColor(Color.red);
+			g.setFont(new Font("serif",Font.BOLD,45));
+			g.drawString(time, 400,50);
+			
+			
 			
 			
 			
@@ -734,7 +754,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 		
 		System.out.println("X "+x+" "+" Y  "+y);
 
-		if((e.getKeyCode()==KeyEvent.VK_LEFT)&&x>5&&!(x>=495 && x<=515&&y>=570&&y<=465)) {
+		if((e.getKeyCode()==KeyEvent.VK_LEFT)&&x>5&&!((y>465&&y<568)||(y>360&&y<465)||(y>255&&y<360)||(y>152&&y<254)||(y>45&&y<149))) {
 			
 		
 			
@@ -744,7 +764,8 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			
 		}
 		
-		if((e.getKeyCode()==KeyEvent.VK_RIGHT)&&x<1250&&!(x>=495 && x<=515&&y>=570&&y<=465)) {
+		if((e.getKeyCode()==KeyEvent.VK_RIGHT)&&x<1200&&!((y>465&&y<568)||(y>360&&y<465)||(y>255&&y<360)||(y>152&&y<254)||(y>45&&y<149))) {
+			
 			
 			
 			x=x+5;
@@ -818,11 +839,14 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 		
 		
 		/*System.out.println("X  "+x+" Y "+y);*/
-		if(x==1070 && y==40 ) {
+		if(x==1070 && y==45 && count==30) {
 			 
 			 
 			 
 			win=true;
+			
+			
+			
 /*	    	UIManager.put("OptionPane.messageFont", new FontUIResource(new Font( "Arial", Font.BOLD, 18)));       
 	    	UIManager.put("OptionPane.minimumSize",new Dimension(200,100));
 	    	JOptionPane.showMessageDialog(null, "Level Complete");
@@ -843,6 +867,42 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 */	    
 	    	
 	    }
+		
+		
+		else if(x==1070 && y==45 && count!=30) {
+			 
+			 
+			 
+			
+			UIManager.put("OptionPane.messageFont", new FontUIResource(new Font( "Arial", Font.BOLD, 16)));       
+	    	UIManager.put("OptionPane.minimumSize",new Dimension(400,200));
+	    	JOptionPane.showMessageDialog(null, "Collect All Stars to finish the game :( !");
+	    	
+	    	
+	    	x=1060;
+	    	
+	    	/*
+	    	try        
+	    	{
+	    	    Thread.sleep(1000);
+	    	} 
+	    	catch(InterruptedException ex) 
+	    	{
+	    	    Thread.currentThread().interrupt();
+	    	}
+	    	
+	    	System.exit(0);
+	    	
+	    	//g.setVisible(false);
+	    	 * 
+	    	 * 
+	    	 * 
+*/	    
+	    	
+	    	
+	    	
+	    }
+		
 		
 		
 		for(int i=0;i<30;i++) {
@@ -923,11 +983,16 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 						clip.start();
 					 
 					 
-					 
-					 arrZombie[j][2]=0;
+						arrZombie[j][2]=0;
+						
+						
+												
 					
-					
-					
+
+				    	
+				    	
+				    	
+				 
 					
 				}
 				
