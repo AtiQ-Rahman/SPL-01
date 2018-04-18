@@ -43,20 +43,20 @@ public class MainClass {
 		BufferedImage img;
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 384, 521);
+		frame.setBounds(420, 35, 400, 690);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(true);
+		frame.setResizable(false);
 		
 		try
 		{
 			
-		 img = ImageIO.read(getClass().getResourceAsStream("/images4.jpg")); 
+		 img = ImageIO.read(getClass().getResourceAsStream("/IIT1.png")); 
 		 jp_1=new JPanel() {
 			 
 			 	@Override
 			    public void paintComponent(Graphics g){
 			       
-			        g.drawImage(img, 0, 0,468,600, this);
+			        g.drawImage(img, 0, 0,400,690, this);
 			        
 			    }
 		 };
@@ -75,7 +75,7 @@ public class MainClass {
 		JButton btnNewButton_1 = new JButton("New Game");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_1.setBackground(new Color(153, 255, 51));
-		btnNewButton_1.setBounds(105, 160, 121, 32);
+		btnNewButton_1.setBounds(140, 300, 121, 32);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			
 				public void actionPerformed(ActionEvent e) {
@@ -107,7 +107,7 @@ public class MainClass {
 		JButton btnExit = new JButton("Exit");
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnExit.setBackground(Color.RED);
-		btnExit.setBounds(125, 295, 78, 32);
+		btnExit.setBounds(160, 350, 78, 32);
 		jp_1.add(btnExit);
 		
 		btnExit.addActionListener(new ActionListener() {

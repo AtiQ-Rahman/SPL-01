@@ -1,7 +1,12 @@
 package mainPackage;
 
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -33,6 +38,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 //import java.util.Timer;
@@ -66,7 +72,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	
 	private BufferedImage img1,img2,img3,img4,img5,img6;
 	Timer timer;
-	public int x=1250,y=570,delay=6;
+	public int x=1240,y=570,delay=6;
 	
 	public int count=0;
 	boolean intersects=false;
@@ -92,16 +98,25 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	int counter=0;
 	String time;
 	
+	int seconds;
+	int minutes;
+	int hours;
+	
+	File file=new File("input.txt");
+
+	
 	public Zombie(JFrame frame)  {
 		
 		this.frame=frame;
+		
+
 	
 		//Game Over Picture Add
 		
 		
 		frame1 = new JFrame();
 		
-		frame1.setBounds(600, 200, 590,330);
+		frame1.setBounds(420, 200, 590,330);
 		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame1.setResizable(false);
 		frame1.setVisible(false);
@@ -119,6 +134,19 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 				       
 				        g.drawImage(img5, 0, 0,  590,330, this);
 				        
+				        
+						
+						time=String.format(" You took 0nly %2d Minutes  & %2d Seconds\n",minutes,seconds);
+						
+						
+						
+						g.setColor(Color.yellow);
+						g.setFont(new Font("serif",Font.BOLD,20));
+						g.drawString(time,125,280);
+						
+				        
+				        //System.out.println(counter);
+				        
 				    }
 			 };
 			 
@@ -127,11 +155,11 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			 panel1.setForeground(Color.BLACK);
 			 frame1.add(panel1);
 			 
-			 JButton UL = new JButton("AGAIN !");
+			 JButton UL = new JButton("TRY !! AGAIN !!");
 			 UL.setFont(new Font("Times New Roman", Font.BOLD, 14));
 			 UL.setBackground(Color.black);
 			 UL.setForeground(Color.white);
-			 UL.setBounds(215, 345, 90, 35);
+			 UL.setBounds(215, 345, 90, 60);
 			 panel1.add(UL);
 		
 			 
@@ -200,7 +228,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 		
 		frame2 = new JFrame();
 		
-		frame2.setBounds(600, 200, 820,400);
+		frame2.setBounds(50,80, 820,500);
 		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame2.setResizable(false);
 		frame2.setVisible(false);
@@ -216,7 +244,18 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 				 @Override
 				    public void paintComponent(Graphics g){
 				       
-				        g.drawImage(img6, 0, 0,  820,400, this);
+				        g.drawImage(img6, 0, 0,  820,500, this);
+				        
+				        
+						time=String.format("Congrates,HERO !! YOU TOOK ONLY %2d Minutes  & %2d Seconds\n",minutes,seconds);
+						
+						
+						
+						g.setColor(Color.red);
+						g.setFont(new Font("Arial",Font.BOLD,20));
+						g.drawString(time,170,450);
+						
+				        
 				        
 				        
 				    }
@@ -227,11 +266,11 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			 panel2.setForeground(Color.BLACK);
 			 frame2.add(panel2);
 			 
-			 JButton UL1 = new JButton("AGAIN ....!");
+			 JButton UL1 = new JButton("BREAK THE CHALLENGE....PLAY AGAIN.....!");
 			 UL1.setFont(new Font("Times New Roman", Font.BOLD, 14));
 			 UL1.setBackground(Color.black);
 			 UL1.setForeground(Color.white);
-			 UL1.setBounds(400, 200, 100, 100);
+			 UL1.setBounds(400, 200, 200, 150);
 			 panel2.add(UL1);
 		
 			 
@@ -719,19 +758,19 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			
 			counter+=14;
 			
-			int seconds=(counter/1000)%60;
-			int minutes=(counter/1000)/60;
-			int hours=(counter/1000)/3600;
+			 seconds=(counter/1000)%60;
+			 minutes=(counter/1000)/60;
+			 hours=(counter/1000)/3600;
 			
 			
 			
-			time=String.format("%2d:%2d:%2d\n",hours,minutes,seconds);
+			time=String.format("Time||%2d:%2d:%2d\n",hours,minutes,seconds);
 			
 			
 			
-			g.setColor(Color.red);
-			g.setFont(new Font("serif",Font.BOLD,45));
-			g.drawString(time, 400,50);
+			g.setColor(Color.black);
+			g.setFont(new Font("serif",Font.BOLD,20));
+			g.drawString(time, 5,20);
 			
 			
 			
@@ -840,9 +879,55 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 		
 		/*System.out.println("X  "+x+" Y "+y);*/
 		if(x==1070 && y==45 && count==30) {
+			
 			 
-			 
-			 
+			
+			
+
+			
+			
+/*			try {
+				
+				
+				BufferedReader read = new BufferedReader(new FileReader(file));
+				Scanner scan = new Scanner(new File("input.txt"));
+				
+				
+				int x;
+				
+				x= scan.nextInt();
+				System.out.println(x);
+
+		    	 if(x>counter){
+		    		
+		    	
+		    		    	
+			    	
+		    		BufferedWriter writer = new BufferedWriter(new FileWriter(file,true));
+			    	
+		    		writer.write(counter);
+		    		writer.newLine();
+			    	
+		    		writer.close();
+			    	
+			    }
+			  
+			 	
+				
+				
+				read.close();
+				
+				
+			}catch(IOException x) {
+				
+				x.printStackTrace();
+			}
+			*/
+			
+			
+			
+			
+			
 			win=true;
 			
 			
@@ -954,7 +1039,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 				//Zombie Kill
 				
 				
-				 if(new Rectangle(bullet.get(i),y+15,15,5).intersects(new Rectangle(arrZombie[j][0],arrZombie[j][1],100,100))){
+				 if(new Rectangle(bullet.get(i),y+15,15,5).intersects(new Rectangle(arrZombie[j][0],arrZombie[j][1],70,70))){
 					
 					 //bullet.removeAll(bullet);
 					 
@@ -1060,6 +1145,9 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 				 if(new Rectangle(arrZombie[j][0],arrZombie[j][1],70,70).intersects(new Rectangle(x,y,40,60)) && arrZombie[j][2]==1)
 					{
 						
+					 
+
+					    
 						 //Zombie & Killer Intersect
 						
 						//System.out.println("bullet"+bullet.get(i)+"  "+(y+15)+"zombie"+arrZombie[j][0]+" "+arrZombie[j][1]);
