@@ -70,11 +70,11 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	public int[][] arrStar=new int[30][3];
 	public int[][]arr2;
 	
-	private BufferedImage img1,img2,img3,img4,img5,img6;
+	private BufferedImage img1,img2,img3,img4,img5,img6,img7;
 	Timer timer;
 	public int x=1240,y=570,delay=6;
 	
-	public int count=0;
+	public int count=30;
 	boolean intersects=false;
 	boolean fire=true;
 	
@@ -90,11 +90,15 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	boolean killer=true,GO=false,win=false;
 	Clip clip = null;
 	boolean sound=false;
+	boolean highScore=false;
+	
 	
 	JFrame frame1;
 	
 	JFrame frame;
 	JFrame frame2;
+	JFrame frame3;
+	
 	int counter=0;
 	String time;
 	
@@ -102,7 +106,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	int minutes;
 	int hours;
 	
-	File file=new File("input.txt");
+	File file=new File("resource/input.txt");
 
 	
 	public Zombie(JFrame frame)  {
@@ -223,7 +227,116 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			
 		}
 		
-	
+		
+		
+		frame3 = new JFrame();
+		
+		frame3.setBounds(150,30, 1000,700);
+		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame3.setResizable(false);
+		frame3.setVisible(false);
+		
+		
+		try
+		{
+			
+			 img7 = ImageIO.read(getClass().getResourceAsStream("/hs.jpg"));
+			 
+			 JPanel panel3 = new JPanel() {
+				 
+				 @Override
+				    public void paintComponent(Graphics g){
+				       
+				        g.drawImage(img7, 0, 0,  1100,678, this);
+				        
+				        
+						
+						time=String.format("\t\t\t\t\tNew HIGH SCORE! You took  %2d Minutes  & %2d Seconds\n",minutes,seconds);
+						
+						
+						
+						g.setColor(Color.black);
+						g.setFont(new Font("serif",Font.BOLD,20));
+						g.drawString(time,250,650);
+						
+				        
+				        //System.out.println(counter);
+				        
+				    }
+			 };
+			 
+			 
+			 panel3.setBounds(0, 725, 488, 1);
+			 panel3.setForeground(Color.BLACK);
+			 frame3.add(panel3);
+			 
+			 JButton UL2 = new JButton("NEW GAME");
+			 UL2.setFont(new Font("Times New Roman", Font.BOLD, 14));
+			 UL2.setBackground(Color.black);
+			 UL2.setForeground(Color.white);
+			 UL2.setBounds(215, 345, 90, 60);
+			 panel3.add(UL2);
+		
+			 
+			 
+			 
+				UL2.addMouseListener(new MouseListener() {
+					
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						// TODO Auto-generated method stub
+						
+						frame3.setVisible(false);
+						
+						
+						MainClass main=new MainClass();
+						
+					}
+
+					@Override
+					public void mousePressed(MouseEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void mouseReleased(MouseEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void mouseExited(MouseEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					
+					
+					
+					
+		});
+			
+			 
+			 
+			 
+			 
+			 
+			 
+		}catch(IOException e) {
+
+			e.printStackTrace();
+			
+			
+			
+		}
+		
 		
 		
 		frame2 = new JFrame();
@@ -503,11 +616,11 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 		
 			
 				
-			g.setColor(Color.yellow);
+			g.setColor(Color.lightGray);
 			g.fillRect(0, 0, 1420, 710);
 			
 			
-			g.setColor(Color.green);
+			g.setColor(Color.yellow);
 				
 			//stair1
 			for(int i=105;i<=210;i=i+21) {
@@ -528,7 +641,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			g.fillRect(250, 315, 5, 105);
 			g.fillRect(300,315, 5, 105);
 				
-			g.setColor(Color.green);
+			g.setColor(Color.yellow);
 			
 			for(int i=315;i<=420;i=i+21) {
 				
@@ -556,7 +669,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			g.fillRect(500,525,5, 105);
 			g.fillRect(550,525,5, 105);
 			
-			g.setColor(Color.green);
+			g.setColor(Color.yellow);
 			
 			for(int i=525;i<=735;i=i+21) {
 				
@@ -566,7 +679,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 
 			//stair5
 			
-			g.setColor(Color.green);
+			g.setColor(Color.yellow);
 		
 			for(int i=420;i<=525;i=i+21) {
 				
@@ -629,7 +742,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			//Score Board
 			g.setColor(Color.red);
 			g.setFont(new Font("serif",Font.BOLD,24));
-			g.drawString("Score is: "+count,550,50);
+			g.drawString("Stones Remaing- "+count,550,30);
 			
 			for(int i=0;i<6;i++) {
 				
@@ -756,6 +869,55 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			}
 			
 			
+			
+			
+			
+			if(highScore==true) {
+				
+			
+				
+				frame.setVisible(false);
+				
+				frame3.setVisible(true);
+				
+				
+			
+				
+				
+				
+				
+				
+				
+				String soundName = "C:\\Users\\Atiq\\eclipse-workspace\\ZoomBie Game\\res\\s2.wav";    
+				AudioInputStream audioInputStream = null;
+				try {
+					audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+				} catch (UnsupportedAudioFileException | IOException e1) {
+					
+					e1.printStackTrace();
+				}
+				Clip clip = null;
+				try {
+					clip = AudioSystem.getClip();
+				} catch (LineUnavailableException e1) {
+					e1.printStackTrace();
+				}
+				try {
+					clip.open(audioInputStream);
+				} catch (LineUnavailableException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				clip.start();
+				
+
+				
+				
+				
+				
+			}
+			
+			
 			counter+=14;
 			
 			 seconds=(counter/1000)%60;
@@ -767,10 +929,33 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			time=String.format("Time||%2d:%2d:%2d\n",hours,minutes,seconds);
 			
 			
+			String number = null ;
+			try {
+				
+				
+				BufferedReader read = new BufferedReader(new FileReader(file));
+				//Scanner scan = new Scanner(new File("input.txt"));
+				number = read.readLine();
+				read.close();
+				
+				
+			
+
+		    	
+				
+				
+			}catch(IOException x) {
+				
+				x.printStackTrace();
+			}
+		
+			
 			
 			g.setColor(Color.black);
-			g.setFont(new Font("serif",Font.BOLD,20));
+			g.setFont(new Font("serif",Font.BOLD,15));
 			g.drawString(time, 5,20);
+		
+			g.drawString("High Score: "+number, 990,20);
 			
 			
 			
@@ -791,7 +976,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	public void keyPressed(KeyEvent e) {
 	
 		
-		System.out.println("X "+x+" "+" Y  "+y);
+		//System.out.println("X "+x+" "+" Y  "+y);
 
 		if((e.getKeyCode()==KeyEvent.VK_LEFT)&&x>5&&!((y>465&&y<568)||(y>360&&y<465)||(y>255&&y<360)||(y>152&&y<254)||(y>45&&y<149))) {
 			
@@ -878,7 +1063,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 		
 		
 		/*System.out.println("X  "+x+" Y "+y);*/
-		if(x==1070 && y==45 && count==30) {
+		if(x==1070 && y==45 && count==0) {
 			
 			 
 			
@@ -886,49 +1071,50 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 
 			
 			
-/*			try {
+		try {
 				
 				
 				BufferedReader read = new BufferedReader(new FileReader(file));
-				Scanner scan = new Scanner(new File("input.txt"));
 				
+				String number = read.readLine();
+				long  x;
 				
-				int x;
-				
-				x= scan.nextInt();
+				read.close();
+				x= Integer.parseInt(number);// scan.nextInt();
 				System.out.println(x);
-
-		    	 if(x>counter){
+					
+				int totalTime= seconds+(minutes*60);
+		    	 if(x>totalTime){
 		    		
 		    	
-		    		    	
 			    	
-		    		BufferedWriter writer = new BufferedWriter(new FileWriter(file,true));
-			    	
-		    		writer.write(counter);
-		    		writer.newLine();
+		    		//BufferedWriter writer = new BufferedWriter(new FileWriter(file,true));
+		    		FileWriter writer = new FileWriter(file);
+		    		writer.write(""+totalTime);
+		    		//writer.newLine();
 			    	
 		    		writer.close();
+		    		highScore=true;
 			    	
 			    }
 			  
 			 	
 				
+		    	 else win=true;
 				
-				read.close();
+				
 				
 				
 			}catch(IOException x) {
 				
 				x.printStackTrace();
 			}
-			*/
 			
 			
 			
 			
 			
-			win=true;
+			
 			
 			
 			
@@ -954,7 +1140,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	    }
 		
 		
-		else if(x==1070 && y==45 && count!=30) {
+		else if(x==1070 && y==45 && count!=0) {
 			 
 			 
 			 
@@ -998,7 +1184,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			
 				arrStar[i][2]=0;
 				
-				count++;
+				count--;
 				
 				String soundName = "C:\\Users\\Atiq\\eclipse-workspace\\ZoomBie Game\\res\\s.wav";    
 				
@@ -1178,6 +1364,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 						
 						
 					
+
 					
 						
 				
