@@ -1,6 +1,7 @@
 package mainPackage;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
@@ -8,13 +9,19 @@ import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
 
 
 
@@ -24,6 +31,8 @@ public class MainClass {
 	private  JLabel background_1;
 	private  JLabel background_2;
 	private  JPanel jp_1;
+	File file=new File("resource/input.txt");
+	String number = null ;
 	
 	public MainClass() {
 		
@@ -75,7 +84,9 @@ public class MainClass {
 		JButton btnNewButton_1 = new JButton("New Game");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_1.setBackground(new Color(153, 255, 51));
-		btnNewButton_1.setBounds(140, 300, 121, 32);
+		btnNewButton_1.setBounds(130, 300, 145, 32);
+		
+		
 		btnNewButton_1.addActionListener(new ActionListener() {
 			
 				public void actionPerformed(ActionEvent e) {
@@ -94,7 +105,7 @@ public class MainClass {
 					
 					
 					
-					f1.setResizable(true);
+					f1.setResizable(false);
 				
 				}
 				
@@ -104,10 +115,65 @@ public class MainClass {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		JButton BestTime = new JButton("Best Time");
+		BestTime.setFont(new Font("Tahoma", Font.BOLD, 14));
+		BestTime.setBackground(Color.RED);
+		BestTime.setBounds(140, 350, 126, 32);
+		jp_1.add(BestTime);
+		
+		BestTime.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				try {
+					
+					
+					BufferedReader read = new BufferedReader(new FileReader(file));
+					
+					number = read.readLine();
+					read.close();
+					
+					
+					
+					
+					UIManager.put("OptionPane.messageFont", new FontUIResource(new Font( "Arial", Font.BOLD, 18)));       
+					UIManager.put("OptionPane.minimumSize",new Dimension(350,250));
+					JOptionPane.showMessageDialog(null,"Best Time is "+number+" Seconds" );
+					
+					
+					
+					
+				}catch(IOException x) {
+					
+					x.printStackTrace();
+				}
+				
+				
+				
+				
+				
+				
+			}
+		});
+		
+				
+
+				
+				
+				
+		
+		
 		JButton btnExit = new JButton("Exit");
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnExit.setBackground(Color.RED);
-		btnExit.setBounds(160, 350, 78, 32);
+		btnExit.setBounds(173, 450, 60, 32);
 		jp_1.add(btnExit);
 		
 		btnExit.addActionListener(new ActionListener() {
@@ -118,18 +184,55 @@ public class MainClass {
 			}
 		});
 		
+				
+				
+				
+				
+		
+		
+		JButton btn = new JButton("Help");
+		btn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btn.setBackground(new Color(153, 255, 51));
+		btn.setBounds(160, 400, 83, 32);
+		jp_1.add(btn);
+		
+		btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			
+				UIManager.put("OptionPane.messageFont", new FontUIResource(new Font( "Arial", Font.BOLD, 18)));       
+		    	UIManager.put("OptionPane.minimumSize",new Dimension(720,400));
+		    	JOptionPane.showMessageDialog(null,"1. To finish the game you have to collect 30 stars and go to the finish point\r\n" + 
+		    			"2. For control the Killer use “ARROW KEYs”\r\n" + 
+		    			"3. It’s not necessary to kill all zombies for finishing game\r\n" + 
+		    			"4. To kill zombies you have to press “Enter”, by pressing “Enter” killer will fire the zombie.\r\n" + 
+		    			"5. Killer can only shoot “LEFT SIDE”\r\n" + 
+		    			"6. If Zombie and Killer intersect each other the game will be over.\r\n" + 
+		    			"7. Who finish the game in minimum time, will be the High Scorer. \r\n" + 
+		    			"" );
+				 
+				
+				
+				
+				
+				
+			}
+		});
+		
+				
+				
+				
+				
+	/*			
+			}
+		});
+		*/
 		
 		
 		
 		
 		
-		//background.setLayout(new FlowLayout());
-		/*JLabel l1=new JLabel("Here is a button");
-		JButton b1=new JButton("I am a button");
-		frame.getContentPane().add(background);
-		background.add(l1);
-		background.add(b1);*/
-		//frame.setSize(new Dimension(img.getWidth(null), img.getHeight(null)));
+
 
 		
 		frame.setVisible(true);

@@ -85,13 +85,14 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	boolean shoot=false;
 	
 	ArrayList<Integer> bullet=new ArrayList<Integer>();
+
 	int[] difference= {5,40,75,110,145};
 	
 	boolean killer=true,GO=false,win=false;
 	Clip clip = null;
 	boolean sound=false;
 	boolean highScore=false;
-	
+	String number = null ;
 	
 	JFrame frame1;
 	
@@ -227,7 +228,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			
 		}
 		
-		
+	//High Score Picture ADD	
 		
 		frame3 = new JFrame();
 		
@@ -251,7 +252,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 				        
 				        
 						
-						time=String.format("\t\t\t\t\tNew HIGH SCORE! You took  %2d Minutes  & %2d Seconds\n",minutes,seconds);
+						time=String.format("\t\t\t\tHIGH SCORE,mama,HIGH SCORE!You took only %2d Minutes  & %2d Seconds\n",minutes,seconds);
 						
 						
 						
@@ -338,6 +339,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 		}
 		
 		
+		//Win Game picture Add
 		
 		frame2 = new JFrame();
 		
@@ -446,6 +448,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			
 		}
 		
+		//Menu Add
 		
 		MenuBar mn=new MenuBar();
 		Menu menu=new Menu("Menu");
@@ -454,11 +457,13 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 
 		
 		MenuItem item1=new MenuItem("New Game");
-		MenuItem item2=new MenuItem("Highest Score");
+		MenuItem item2=new MenuItem("Best Time");
+		MenuItem item4=new MenuItem("Help");
 		MenuItem item3=new MenuItem("Exit");
 		
 		menu.add(item1);
 		menu.add(item2);
+		menu.add(item4);
 		menu.add(item3);
 		
 		mn.add(menu);
@@ -471,6 +476,50 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			public void actionPerformed(ActionEvent e) {
 				
 				frame.setVisible(false);
+				 
+				
+			}
+			
+		});
+		
+		
+		
+		
+		item4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+
+				UIManager.put("OptionPane.messageFont", new FontUIResource(new Font( "Arial", Font.BOLD, 18)));       
+		    	UIManager.put("OptionPane.minimumSize",new Dimension(720,400));
+		    	JOptionPane.showMessageDialog(null,"1. To finish the game you have to collect 30 stars and go to the finish point\r\n" + 
+		    			"2. For control the Killer use “ARROW KEYs”\r\n" + 
+		    			"3. It’s not necessary to kill all zombies for finishing game\r\n" + 
+		    			"4. To kill zombies you have to press “Enter”, by pressing “Enter” killer will fire the zombie.\r\n" + 
+		    			"5. Killer can only shoot “LEFT SIDE”\r\n" + 
+		    			"6. If Zombie and Killer intersect each other the game will be over.\r\n" + 
+		    			"7. Who finish the game in minimum time, will be the High Scorer. \r\n" + 
+		    			"" );
+				 
+				
+			}
+			
+		});
+		
+		
+		
+		
+		
+		item2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				UIManager.put("OptionPane.messageFont", new FontUIResource(new Font( "Arial", Font.BOLD, 18)));       
+		    	UIManager.put("OptionPane.minimumSize",new Dimension(300,100));
+		    	JOptionPane.showMessageDialog(null,"Best Time is "+number+" Seconds" );
 				 
 				
 			}
@@ -750,13 +799,14 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			}
 			
 			
-			
+			//bullet drawing
 			
 			for(int x:bullet) {
 				
 				g.setColor(Color.RED);
+				
 				if(fire==true) g.fillRoundRect(x, y+25,15,5,3,3);
-			}
+				}
 			
 			if(shoot==true) {
 				
@@ -918,7 +968,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			}
 			
 			
-			counter+=14;
+			 counter+=14;
 			
 			 seconds=(counter/1000)%60;
 			 minutes=(counter/1000)/60;
@@ -926,10 +976,10 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			
 			
 			
-			time=String.format("Time||%2d:%2d:%2d\n",hours,minutes,seconds);
+			time=String.format("Time||%02d:%02d:%02d\n",hours,minutes,seconds);
 			
 			
-			String number = null ;
+			
 			try {
 				
 				
@@ -955,7 +1005,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			g.setFont(new Font("serif",Font.BOLD,15));
 			g.drawString(time, 5,20);
 		
-			g.drawString("High Score: "+number, 990,20);
+			g.drawString("Best Time: "+number+" Seconds", 938,20);
 			
 			
 			
