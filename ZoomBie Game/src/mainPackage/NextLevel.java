@@ -1,3 +1,4 @@
+
 package mainPackage;
 
 
@@ -63,11 +64,11 @@ import javax.swing.plaf.FontUIResource;
 
 
 
-public class Zombie extends JPanel implements ActionListener,KeyListener  {
+public class NextLevel extends JPanel implements ActionListener,KeyListener  {
 	
 	
 	
-	public int[][] arrStar=new int[30][3];
+	public int[][] arrStar=new int[48][3];
 	public int[][]arr2;
 	
 	private BufferedImage img1,img2,img3,img4,img5,img6,img7;
@@ -77,12 +78,12 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	
 	public int x=1240,y=570,delay=6;
 	
-	public int count=30;
+	public int count=48;
 
 	
-	int[][] arrZombie= {{150,540,1},{800,435,1},{1000,330,1},{1195,225,1},{100,120,1},{5,15,1}};
+	int[][] arrNextLevel= {{150,540,1},{800,435,1},{1000,330,1},{1195,225,1},{100,120,1},{5,15,1}};
 	
-	int[] dirValue= {-5,-3,-2,-3,-4,-3};
+	int[] dirValue= {-8,-6,-5,-6,-8,-6};
 	
 
 	
@@ -107,7 +108,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	File file=new File("resource/input.txt");
 
 	
-	public Zombie(JFrame frame)  {
+	public NextLevel(JFrame frame)  {
 		
 		this.frame=frame;
 		
@@ -249,7 +250,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 				        
 				        
 						
-						time=String.format("\t\t\t\tHIGH SCORE,mama,HIGH SCORE!You took only %2d Minutes  & %2d Seconds\n",minutes,seconds);
+						time=String.format("\t\t\t\tHIGH SCORE!You took only %2d Minutes  & %2d Seconds\n",minutes,seconds);
 						
 						
 						
@@ -258,7 +259,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 						g.drawString(time,250,650);
 						
 				        
-				        //System.out.println(counter);
+				        
 				        
 				    }
 			 };
@@ -268,7 +269,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			 panel3.setForeground(Color.BLACK);
 			 frame3.add(panel3);
 			 
-			 JButton UL2 = new JButton("Main Menu");
+			 JButton UL2 = new JButton("NEW GAME");
 			 UL2.setFont(new Font("Times New Roman", Font.BOLD, 14));
 			 UL2.setBackground(Color.black);
 			 UL2.setForeground(Color.white);
@@ -276,13 +277,6 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			 panel3.add(UL2);
 		
 			 
-			 JButton L2 = new JButton("Next Level");
-			 L2.setFont(new Font("Times New Roman", Font.BOLD, 14));
-			 L2.setBackground(Color.black);
-			 L2.setForeground(Color.white);
-			 L2.setBounds(215, 345, 120, 60);
-			 panel3.add(L2);
-		
 			 
 			 
 				UL2.addMouseListener(new MouseListener() {
@@ -329,60 +323,6 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 		});
 			
 			 
-				
-				
-				//New Level
-				
-				L2.addMouseListener(new MouseListener() {
-					
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-						frame2.setVisible(false);
-						JFrame f1 = new JFrame("Next Level");
-						
-						NextLevel main=new NextLevel(f1);
-						f1.setSize(1300,700);
-						f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-						f1.add(main);
-						f1.setVisible(true);
-						
-						
-						
-						f1.setResizable(false);
-						
-					}
-
-					@Override
-					public void mousePressed(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-
-					@Override
-					public void mouseReleased(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-
-					@Override
-					public void mouseExited(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-
-					
-					
-					
-					
-		});
 			 
 			 
 			 
@@ -451,13 +391,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			 panel2.add(UL1);
 		
 			 
-				
-			 JButton L1 = new JButton("Next Level");
-			 L1.setFont(new Font("Times New Roman", Font.BOLD, 14));
-			 L1.setBackground(Color.black);
-			 L1.setForeground(Color.white);
-			 L1.setBounds(400, 200, 200, 100);
-			 panel2.add(L1);
+			
 			
 			 
 				UL1.addMouseListener(new MouseListener() {
@@ -503,57 +437,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 					
 		});
 			
-			 //newLevel
-				L1.addMouseListener(new MouseListener() {
-					
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-						frame2.setVisible(false);
-						JFrame f1 = new JFrame("Next Level");
-						
-						NextLevel main=new NextLevel(f1);
-						f1.setSize(1300,700);
-						f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-						f1.add(main);
-						f1.setVisible(true);
-						
-						
-						
-						f1.setResizable(false);
-						
-					}
-
-					@Override
-					public void mousePressed(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-
-					@Override
-					public void mouseReleased(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-
-					@Override
-					public void mouseExited(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-
-					
-					
-					
-					
-		});
+			 
 			 
 			 
 			 
@@ -615,11 +499,11 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 				UIManager.put("OptionPane.messageFont", new FontUIResource(new Font( "Arial", Font.BOLD, 18)));       
 		    	UIManager.put("OptionPane.minimumSize",new Dimension(720,400));
 		    	JOptionPane.showMessageDialog(null,"1. To finish the game you have to collect 30 stars and go to the finish point\r\n" + 
-		    			"2. For control the Killer use ‚ÄúARROW KEYs‚Äù\r\n" + 
-		    			"3. It‚Äôs not necessary to kill all zombies for finishing game\r\n" + 
-		    			"4. To kill zombies you have to press ‚ÄúEnter‚Äù, by pressing ‚ÄúEnter‚Äù killer will fire the zombie.\r\n" + 
-		    			"5. Killer can only shoot ‚ÄúLEFT SIDE‚Äù\r\n" + 
-		    			"6. If Zombie and Killer intersect each other the game will be over.\r\n" + 
+		    			"2. For control the Killer use ìARROW KEYsî\r\n" + 
+		    			"3. Itís not necessary to kill all NextLevels for finishing game\r\n" + 
+		    			"4. To kill NextLevels you have to press ìEnterî, by pressing ìEnterî killer will fire the NextLevel.\r\n" + 
+		    			"5. Killer can only shoot ìLEFT SIDEî\r\n" + 
+		    			"6. If NextLevel and Killer intersect each other the game will be over.\r\n" + 
 		    			"7. Who finish the game in minimum time, will be the High Scorer. \r\n" + 
 		    			"" );
 				 
@@ -655,38 +539,38 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	
 		Random randData = new Random();
 		
-		for(int i=0;i<5;i++) {
+		for(int i=0;i<8;i++) {
 			arrStar[i][0] = randData.nextInt(1200);
 			arrStar[i][1]=615;
 		}
 
-		for(int i=5;i<10;i++) {
+		for(int i=8;i<16;i++) {
 			arrStar[i][0] = randData.nextInt(1200);
 			arrStar[i][1]=510;
 		}		
 		
-		for(int i=10;i<15;i++) {
+		for(int i=16;i<24;i++) {
 			arrStar[i][0] = randData.nextInt(1200);
 			arrStar[i][1]=405;
 		}
 		
-		for(int i=15;i<20;i++) {
+		for(int i=24;i<32;i++) {
 			arrStar[i][0] = randData.nextInt(1200);
 			arrStar[i][1]=300;
 		}
 		
-		for(int i=20;i<25;i++) {
+		for(int i=32;i<40;i++) {
 			arrStar[i][0] = randData.nextInt(1200);
 			arrStar[i][1]=195;
 		}
 		
-		for(int i=25;i<30;i++) {
+		for(int i=40;i<48;i++) {
 			arrStar[i][0] = randData.nextInt(1000);
 			arrStar[i][1]=90;
 		}
 		
 		
-		for(int i=0;i<30;i++) {
+		for(int i=0;i<48;i++) {
 			
 			arrStar[i][2]=1;
 		}
@@ -738,6 +622,13 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	
 
 	
+	public void NextLevel(JFrame f1) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
 	public void paintComponent(Graphics g) {
 		
 			
@@ -832,7 +723,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 
 			g.setColor(Color.RED);
 			
-			for(int i=0;i<30;i++) {
+			for(int i=0;i<48;i++) {
 				 
 				if(arrStar[i][2]==1)	g.drawImage(img2,arrStar[i][0],arrStar[i][1],15,15,this);
 			}
@@ -872,7 +763,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			
 			for(int i=0;i<6;i++) {
 				
-				if(arrZombie[i][2]==1) g.drawImage(img4,arrZombie[i][0],arrZombie[i][1],100,100, this);
+				if(arrNextLevel[i][2]==1) g.drawImage(img4,arrNextLevel[i][0],arrNextLevel[i][1],100,100, this);
 			}
 			
 			
@@ -1237,7 +1128,32 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 				x.printStackTrace();
 			}
 			
-
+			
+			
+			
+			
+			
+			
+			
+			
+/*	    	UIManager.put("OptionPane.messageFont", new FontUIResource(new Font( "Arial", Font.BOLD, 18)));       
+	    	UIManager.put("OptionPane.minimumSize",new Dimension(200,100));
+	    	JOptionPane.showMessageDialog(null, "Level Complete");
+	    	
+	    	
+	    	try        
+	    	{
+	    	    Thread.sleep(1000);
+	    	} 
+	    	catch(InterruptedException ex) 
+	    	{
+	    	    Thread.currentThread().interrupt();
+	    	}
+	    	
+	    	System.exit(0);
+	    	
+	    	//g.setVisible(false);
+*/	    
 	    	
 	    }
 		
@@ -1253,7 +1169,24 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 	    	
 	    	
 	    	x=1060;
-
+	    	
+	    	/*
+	    	try        
+	    	{
+	    	    Thread.sleep(1000);
+	    	} 
+	    	catch(InterruptedException ex) 
+	    	{
+	    	    Thread.currentThread().interrupt();
+	    	}
+	    	
+	    	System.exit(0);
+	    	
+	    	//g.setVisible(false);
+	    	 * 
+	    	 * 
+	    	 * 
+*/	    
 	    	
 	    	
 	    	
@@ -1304,13 +1237,13 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 		
 		for(int i=0;i<bullet.size();i++) {
 			
-			for(int j=0;j<arrZombie.length;j++) {
+			for(int j=0;j<arrNextLevel.length;j++) {
 				
 				
-				//Zombie Kill
+				//NextLevel Kill
 				
 				
-				 if(new Rectangle(bullet.get(i),y+15,15,5).intersects(new Rectangle(arrZombie[j][0],arrZombie[j][1],70,70))){
+				 if(new Rectangle(bullet.get(i),y+15,15,5).intersects(new Rectangle(arrNextLevel[j][0],arrNextLevel[j][1],70,70))){
 					
 					 //bullet.removeAll(bullet);
 					 
@@ -1339,7 +1272,7 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 						clip.start();
 					 
 					 
-						arrZombie[j][2]=0;
+						arrNextLevel[j][2]=0;
 						
 						
 												
@@ -1360,30 +1293,30 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 		
 		
 		
-		//zombie run
+		//NextLevel run
 		
-		arrZombie[0][0]+=dirValue[0];
-		arrZombie[1][0]-=dirValue[1];
-		arrZombie[2][0]-=dirValue[2];
-		arrZombie[3][0]+=dirValue[3];
-		arrZombie[4][0]+=dirValue[4];
-		arrZombie[5][0]+=dirValue[5];
+		arrNextLevel[0][0]+=dirValue[0];
+		arrNextLevel[1][0]-=dirValue[1];
+		arrNextLevel[2][0]-=dirValue[2];
+		arrNextLevel[3][0]+=dirValue[3];
+		arrNextLevel[4][0]+=dirValue[4];
+		arrNextLevel[5][0]+=dirValue[5];
 		
 		
 		
 		for(int i=0;i<6;i++) {
 			
-			if(arrZombie[i][0]>1200) {
+			if(arrNextLevel[i][0]>1200) {
 				
-				arrZombie[i][0]=1200;
+				arrNextLevel[i][0]=1200;
 				
 				dirValue[i]=dirValue[i]*-1;
 				
 			}
 			
-			if(arrZombie[i][0]<0) {
+			if(arrNextLevel[i][0]<0) {
 				
-				arrZombie[i][0]=0;
+				arrNextLevel[i][0]=0;
 				
 				dirValue[i]=dirValue[i]*-1;
 				
@@ -1413,15 +1346,15 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 			
 			for(int j=0;j<6;j++) {
 			
-				 if(new Rectangle(arrZombie[j][0],arrZombie[j][1],70,70).intersects(new Rectangle(x,y,40,60)) && arrZombie[j][2]==1)
+				 if(new Rectangle(arrNextLevel[j][0],arrNextLevel[j][1],70,70).intersects(new Rectangle(x,y,40,60)) && arrNextLevel[j][2]==1)
 					{
 						
 					 
 
 					    
-						 //Zombie & Killer Intersect
+						 //NextLevel & Killer Intersect
 						
-						//System.out.println("bullet"+bullet.get(i)+"  "+(y+15)+"zombie"+arrZombie[j][0]+" "+arrZombie[j][1]);
+						//System.out.println("bullet"+bullet.get(i)+"  "+(y+15)+"NextLevel"+arrNextLevel[j][0]+" "+arrNextLevel[j][1]);
 						
 					 	
 					 
@@ -1459,7 +1392,34 @@ public class Zombie extends JPanel implements ActionListener,KeyListener  {
 						GO=true;
 
 						
-	
+						
+						 
+				    /*	UIManager.put("OptionPane.messageFont", new FontUIResource(new Font( "Arial", Font.BOLD, 18)));       
+				    	UIManager.put("OptionPane.minimumSize",new Dimension(200,100));
+				    	JOptionPane.showMessageDialog(null, "Loser");
+				    	
+				    	
+				    	
+				    
+				    	
+				    	
+				    	
+				    	
+				    	
+				    	
+				    	try        
+				    	{
+				    	    Thread.sleep(1000);
+				    	} 
+				    	catch(InterruptedException ex) 
+				    	{
+				    	    Thread.currentThread().interrupt();
+				    	}
+				    	
+				    
+			    	
+						System.exit(0);
+						*/
 						
 					}
 			}

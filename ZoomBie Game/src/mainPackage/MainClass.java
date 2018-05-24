@@ -219,30 +219,7 @@ public class MainClass {
 			}
 		});
 		
-				
-				
-				
-				
-	/*			
-			}
-		});
-		*/
-		
-		
-		
-		
-		
-
-
-		
-		frame.setVisible(true);
-		
-		
-		
-		
-	
-
-		
+	frame.setVisible(true);
 				
 	}
 
